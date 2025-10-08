@@ -3,6 +3,7 @@ function setup(){
     canvas.center();
     background("white");
     canvas.mouseReleased(classifierCanvas)
+    oyente = window.speechSynthesis;
 
 
 }
@@ -40,7 +41,8 @@ function gotResult(results,error){
 
         document.getElementById('confidence').innerHTML = 'Confianza: '+ Math.round(results[0].confidence * 100) + "%"
 
-
+        hablante = new SpeechSynthesisUtterance(results[0].label)
+        oyente.speak(hablante)
 
 
 };
